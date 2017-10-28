@@ -15,9 +15,4 @@ public class UsuarioRepositoryImpl extends AbstractRepositoryImpl<Usuario> imple
 		super(Usuario.class);
 	}
 	
-	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
-	public Usuario save(Usuario object) {
-		return super.save(object);
-	}
-	
 }

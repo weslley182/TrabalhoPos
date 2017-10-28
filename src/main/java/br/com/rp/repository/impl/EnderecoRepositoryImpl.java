@@ -14,9 +14,5 @@ public class EnderecoRepositoryImpl extends AbstractRepositoryImpl<Endereco> imp
 		super(Endereco.class);
 	}
 	
-	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
-	public Endereco save(Endereco object) {
-		return super.save(object);
-	}
 
 }

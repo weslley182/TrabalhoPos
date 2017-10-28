@@ -16,10 +16,7 @@ public class PropostaRepositoryImpl extends AbstractRepositoryImpl<Proposta> imp
 		super(Proposta.class);
 	}
 	
-	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
-	public Proposta save(Proposta object) {
-		return super.save(object);
-	}
+	
 	
 }
 

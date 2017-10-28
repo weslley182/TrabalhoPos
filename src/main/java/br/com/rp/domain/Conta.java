@@ -21,7 +21,7 @@ public class Conta extends BaseEntity {
 
 	@ManyToOne
 	@JoinColumn(name = "id_usuario")
-	private Usuario usuario;	
+	private Usuario usuario;
 
 	@Column
 	private String senha;
@@ -79,7 +79,17 @@ public class Conta extends BaseEntity {
 	public void setValorCredito(double valorCredito) {
 		this.valorCredito = valorCredito;
 	}
-	
-	
+
+	public boolean possuiSaldo(Double valorSaque) {
+		return valorSaldo >= valorSaque;
+	}
+
+	public void sacar(Double valor) throws Exception {
+		if (possuiSaldo(valor)) {
+			valorSaldo -= valor;
+		} else
+			throw new Exception("Saldo insuficiente.");
+
+	}
 
 }

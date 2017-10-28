@@ -18,10 +18,12 @@ import org.junit.runner.RunWith;
 
 import br.com.rp.RootApplication;
 import br.com.rp.domain.Log;
+import br.com.rp.interceptors.AuditoriaInterceptor;
 import br.com.rp.repository.LogRepositoryTest;
 import br.com.rp.repository.Repository;
 import br.com.rp.repository.impl.AbstractRepositoryImpl;
 import br.com.rp.rest.LogRestTest;
+import br.com.rp.view.ViewModelOperacaoSaque;
 
 @RunWith(Arquillian.class)
 public abstract class AbstractRestTest {
@@ -50,7 +52,9 @@ public abstract class AbstractRestTest {
 				.addPackages(false, AbstractRestTest.class.getPackage())
 				.addPackages(false, RootApplication.class.getPackage())
 				.addPackages(false, LogRest.class.getPackage())
+				.addPackages(false, ViewModelOperacaoSaque.class.getPackage())
 				.addPackage(LogRepositoryTest.class.getPackage())
+				.addPackage(AuditoriaInterceptor.class.getPackage())
 				.addPackage(LogRestTest.class.getPackage())
 				.addAsResource("test-persistence.xml", "META-INF/persistence.xml")
 				.addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml").addAsWebInfResource("vbank-ds.xml")

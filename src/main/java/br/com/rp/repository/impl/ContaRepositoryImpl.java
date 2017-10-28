@@ -12,10 +12,4 @@ public class ContaRepositoryImpl extends AbstractRepositoryImpl<Conta> implement
 	public ContaRepositoryImpl() {
 		super(Conta.class);
 	}
-	
-	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
-	public Conta save(Conta object) {
-		return super.save(object);
-	}
-
 }

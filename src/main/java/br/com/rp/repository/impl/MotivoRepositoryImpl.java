@@ -14,9 +14,6 @@ public class MotivoRepositoryImpl extends AbstractRepositoryImpl<Motivo> impleme
 		super(Motivo.class);
 	}
 	
-	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
-	public Motivo save(Motivo object) {
-		return super.save(object);
-	}
+
 	
 }
