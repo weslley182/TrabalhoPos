@@ -14,13 +14,14 @@ public class Conta extends BaseEntity {
 
 	@Column
 	@Enumerated(EnumType.STRING)
-	private Enum tipoConta;
+	private TipoConta tipoConta;
 
 	@Column(unique = true)
 	private String numeroConta;
 
+	@ManyToOne
 	@JoinColumn(name = "id_usuario")
-	private Usuario usuario;
+	private Usuario usuario;	
 
 	@Column
 	private String senha;
@@ -31,11 +32,11 @@ public class Conta extends BaseEntity {
 	@Column
 	private double valorCredito;
 
-	public Enum getTipoConta() {
+	public TipoConta getTipoConta() {
 		return tipoConta;
 	}
 
-	public void setTipoConta(Enum tipoConta) {
+	public void setTipoConta(TipoConta tipoConta) {
 		this.tipoConta = tipoConta;
 	}
 
