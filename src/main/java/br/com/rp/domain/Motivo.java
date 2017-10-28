@@ -14,7 +14,10 @@ public class Motivo extends BaseEntity {
 
 	@Column
 	private String descricao;
-
+	
+	@Column
+	private String observacao;
+	
 	public String getDescricao() {
 		return descricao;
 	}
@@ -29,9 +32,6 @@ public class Motivo extends BaseEntity {
 
 	public void setObservacao(String observacao) {
 		this.observacao = observacao;
-	}
-
-	@Column
-	private String observacao;
+	}	
 
 }
