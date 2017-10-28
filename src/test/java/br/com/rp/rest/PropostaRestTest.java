@@ -1,5 +1,10 @@
 package br.com.rp.rest;
 
+
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Entity;
@@ -9,29 +14,28 @@ import javax.ws.rs.core.MediaType;
 import org.junit.Assert;
 import org.junit.Test;
 
-import br.com.rp.domain.Conta;
-import br.com.rp.domain.TipoConta;
+import br.com.rp.domain.Proposta;
 import br.com.rp.domain.Usuario;
 
-public class ContaRestTest extends AbstractRestTest {
-	
-	private static final String URL = "http://localhost:8080/vbank/api/";
+public class PropostaRestTest extends AbstractRestTest {
+
+	private static final String URL = "http://localhost:8080/vbank/api/";	
 	
 	@Test
-	public void deveSalvarConta() {
-		Usuario usu = criarUsuario();		
+	public void deveSalvarProposta() {
+		Calendar calendar = new GregorianCalendar();
+		Date date = new Date();
+		calendar.setTime(date);		 ;
 		
-		Conta conta = new Conta();
-		conta.setNumeroConta("11502-2");
-		conta.setSenha("111");
-		conta.setValorCredito(1000.00);
-		conta.setValorSaldo(10000.00);
-		conta.setTipoConta(TipoConta.CORRENTE);
-		conta.setUsuario(usu);
+		Usuario usu = criarUsuario();
+		System.out.println("Nome do Usuario: " + usu.getNome());		
+		Proposta prop = new Proposta();
+		prop.setDtEnvio(calendar.getTime());
+		prop.setUsuario(usu);		
 		
 		Client client = ClientBuilder.newClient();
-		WebTarget target = client.target(URL + "conta");
-		Long result = target.request(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON).post(Entity.entity(conta, MediaType.APPLICATION_JSON),Long.class);
+		WebTarget target = client.target(URL + "proposta");
+		Long result = target.request(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON).post(Entity.entity(prop, MediaType.APPLICATION_JSON),Long.class);
 		
 		Assert.assertTrue(result > 0);
 	}
@@ -50,5 +54,4 @@ public class ContaRestTest extends AbstractRestTest {
 		System.out.println("ID do Usuario: " + usuario1.getId());
 		return usuario1;		
 	}
-	
 }
